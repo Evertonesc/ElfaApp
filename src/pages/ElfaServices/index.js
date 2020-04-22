@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { View, Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { View, Image, ActivityIndicator, Text } from 'react-native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { CardViewWithImage } from 'react-native-simple-card-view'
 
 
@@ -16,14 +16,15 @@ import Charts from '../Charts';
 export default function ElfaServices() {
 
   const navigation = useNavigation();
-
+  const route = useRoute();
   function navigateToCharts(){
     navigation.navigate('Charts');
   }
 
     return (
       <View style={styles.container}>
-        <Image source={logo}/>
+       
+        
         <CardViewWithImage
         width='95%'
         source={ elfaGestão }
@@ -31,6 +32,7 @@ export default function ElfaServices() {
         imageHeight={ 130 }
         onPress={() => navigateToCharts(Charts)}
     />
+    
 
 <CardViewWithImage
         width='95%'

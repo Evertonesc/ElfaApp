@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#f0f8ff',
+      backgroundColor: '#ecf0f5',
       alignItems: 'center',
       justifyContent: 'center',
     },
@@ -14,10 +14,12 @@ export default StyleSheet.create({
     },
     imageLogo: {
       marginBottom: 50,
+      height:105,
+      width:200
     },
     inputView: {
         width: '80%',
-        backgroundColor: '#fff',
+        backgroundColor: '#FFF',
         borderRadius: 25,
         height: 50,
         marginBottom: 20,

@@ -16,7 +16,7 @@ export default function Routes (){
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="ElfaServices" component={ElfaServices} />
         <Stack.Screen name="Charts" component={Charts}/>
-        <Stack.Screen name="Charts" component={ClientMenu}/>
+        <Stack.Screen name="ClientMenu" component={ClientMenu}/>
       </Stack.Navigator>
     </NavigationContainer>
     )
