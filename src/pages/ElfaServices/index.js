@@ -1,10 +1,15 @@
 import * as React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { View, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { CardViewWithImage } from 'react-native-simple-card-view'
+
+
+import elfaGestão from '../../../assets/Services1.png'
+import elfaProjetos from '../../../assets/Services2.png'
+import elfaAr from '../../../assets/Services3.png'
+import logo from '../../../assets/logo.png'
 
 import styles from './styles';
-
 import Charts from '../Charts';
 
 
@@ -17,13 +22,30 @@ export default function ElfaServices() {
   }
 
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Elfa Services</Text>
+      <View style={styles.container}>
+        <Image source={logo}/>
+        <CardViewWithImage
+        width='95%'
+        source={ elfaGestão }
+        imageWidth={ '100%' }
+        imageHeight={ 130 }
+        onPress={() => navigateToCharts(Charts)}
+    />
 
-        <TouchableOpacity style={styles.loginBtn} onPress={() => navigateToCharts(Charts)}>
-          <Text>Go to Charts</Text>
-          
-      </TouchableOpacity>
+<CardViewWithImage
+        width='95%'
+        source={ elfaProjetos }
+        imageWidth={ '100%' }
+        imageHeight={ 130 }
+        
+    />
+
+<CardViewWithImage
+        width='95%'
+        source={ elfaAr }
+        imageWidth={ '100%' }
+        imageHeight={ 130 }
+    />
       </View>
     );
   }

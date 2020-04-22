@@ -18,9 +18,9 @@ export default function Login() {
 
   return (
     <View style={styles.container}>
-
-        <Image source={logo} />
-      
+        <View>
+        <Image source={logo}  style={styles.imageLogo}/>
+        </View>
       <View style={styles.inputView}>
           <TextInput
           style={styles.inputText}

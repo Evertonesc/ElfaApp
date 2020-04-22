@@ -7,6 +7,7 @@ const Stack = createStackNavigator();
 import Login from './pages/Login';
 import ElfaServices from './pages/ElfaServices';
 import Charts from './pages/Charts';
+import ClientMenu from './pages/ClientMenu';
 
 export default function Routes (){
     return(
@@ -15,6 +16,7 @@ export default function Routes (){
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="ElfaServices" component={ElfaServices} />
         <Stack.Screen name="Charts" component={Charts}/>
+        <Stack.Screen name="Charts" component={ClientMenu}/>
       </Stack.Navigator>
     </NavigationContainer>
     )

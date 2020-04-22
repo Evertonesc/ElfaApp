@@ -9,6 +9,8 @@ import {
     StackedBarChart
   } from "react-native-chart-kit";
 
+import styles from './styles';
+
 //   import logo from '../../../assets/logo.png'
 // import ElfaServices from '../ElfaServices';
 // import styles from './styles';
@@ -16,7 +18,7 @@ import {
 
 export default function Charts(){
     return(
-        <View>
+        <View style={styles.container}>
   <Text>Bezier Line Chart</Text>
   <LineChart
     data={{
@@ -41,8 +43,8 @@ export default function Charts(){
     yAxisInterval={2} // optional, defaults to 1
     chartConfig={{
       backgroundColor: "#774585",
-      backgroundGradientFrom: "#774585",
-      backgroundGradientTo: "#774585",
+      backgroundGradientFrom: "#fff",
+      backgroundGradientTo: "#fff",
       decimalPlaces: 2, // optional, defaults to 2dp
       color: (opacity = 1) => `rgba(20,0,255, ${opacity})`,
       labelColor: (opacity = 2) => `rgba(20,0,255, ${opacity})`,

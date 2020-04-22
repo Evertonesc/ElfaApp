@@ -12,6 +12,9 @@ export default StyleSheet.create({
       flex: 1,
    
     },
+    imageLogo: {
+      marginBottom: 50,
+    },
     inputView: {
         width: '80%',
         backgroundColor: '#fff',
@@ -20,6 +23,7 @@ export default StyleSheet.create({
         marginBottom: 20,
         justifyContent: 'center',
         padding:20,
+        
     },
     inputText: {
       height: 50,
