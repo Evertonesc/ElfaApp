@@ -13,15 +13,16 @@ export default StyleSheet.create({
     justifyContent: 'space-between'
   },
   headerText: {
-    fontSize: 25,
+    fontSize: 20,
     color: "#000000",
     fontWeight: 'bold',
     marginBottom: 15,
     justifyContent: 'space-between'
   },
   icon: {
-    height: 39,
-    width: 45,
+    height: 37,
+    marginTop: -6,
+    width: 40,
     alignItems: "center",
     
   },
@@ -38,7 +39,7 @@ export default StyleSheet.create({
   boxesText: {
     color: "#FFF",
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 15,
     flexDirection: "row",
   },
   box1: {
