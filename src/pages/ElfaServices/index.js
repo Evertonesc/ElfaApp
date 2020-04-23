@@ -33,7 +33,7 @@ export default function ElfaServices() {
        
         
         <CardViewWithImage
-        width='95%'
+        width= '95%'
         source={ elfaGestão }
         imageWidth={ '100%' }
         imageHeight={ 130 }

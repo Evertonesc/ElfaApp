@@ -20,7 +20,7 @@ export default function Charts(){
     return(
         <View style={styles.container}>
   <Text>Elfa Engenharia</Text>
-  <LineChart
+  <BarChart
     data={{
       labels: ["January", "February", "March", "April", "May", "June"],
       datasets: [

@@ -7,4 +7,7 @@ export default StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
+    header: {
+      marginBottom: 10,
+    }
 })

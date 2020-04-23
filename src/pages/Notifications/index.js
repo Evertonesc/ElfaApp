@@ -6,7 +6,7 @@ import styles from './styles';
 export default function Notifications(){
     return(
         <View style={styles.container}>
-            <Text>Notifications Screen</Text>
+            <Text style={styles.header}>Notifications Screen</Text>
         </View>
     )
 }
