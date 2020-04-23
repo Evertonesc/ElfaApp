@@ -19,7 +19,7 @@ import styles from './styles';
 export default function Charts(){
     return(
         <View style={styles.container}>
-  <Text>Bezier Line Chart</Text>
+  <Text>Elfa Engenharia</Text>
   <LineChart
     data={{
       labels: ["January", "February", "March", "April", "May", "June"],

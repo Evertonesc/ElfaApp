@@ -10,15 +10,22 @@ import elfaAr from '../../../assets/Services3.png'
 import logo from '../../../assets/logo.png'
 
 import styles from './styles';
-import Charts from '../Charts';
+
+import ClientMenu from '../ClientMenu';
+// import Charts from '../Charts';
 
 
 export default function ElfaServices() {
 
   const navigation = useNavigation();
-  const route = useRoute();
-  function navigateToCharts(){
-    navigation.navigate('Charts');
+  
+  
+  // function navigateToCharts(){
+  //   navigation.navigate('Charts');
+  // }
+
+  function navigateToClientMenu(){
+    navigation.navigate('ClientMenu')
   }
 
     return (
@@ -30,7 +37,7 @@ export default function ElfaServices() {
         source={ elfaGestão }
         imageWidth={ '100%' }
         imageHeight={ 130 }
-        onPress={() => navigateToCharts(Charts)}
+        onPress={() => navigateToClientMenu(ClientMenu)}
     />
     
 
