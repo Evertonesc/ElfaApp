@@ -36,5 +36,10 @@
     "@babel/core": "^7.8.6",
     "babel-preset-expo": "~8.1.0"
   },
-  "private": true
+  "private": true,
+  "name": "ElfaApp",
+  "version": "1.0.0",
+  "repository": "https://github.com/Evertonesc/ElfaApp.git",
+  "author": "Everton Costa <evertonsouzaesc@gmail.com>",
+  "license": "MIT"
 }
