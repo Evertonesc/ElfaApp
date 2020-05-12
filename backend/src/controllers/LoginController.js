@@ -1,30 +1,16 @@
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
 const sql = require('mssql');
+var sqlConnect = require('../database/connection');
 
 var jsonParser = bodyParser.json();
-
 var urlencondeParser = bodyParser.urlencoded({ extended: false })
-
-const config = {
-    user: 'react',
-    password: 'react',
-    server: 'DESKTOP-NPSHI85\\EVERTONESC',
-    database: 'METALSOL_DESENV'
-};
-
-const config2 = {
-    user: 'react',
-    password: 'react',
-    server: 'DESKTOP-NPSHI85\\EVERTONESC',
-    database: 'teste'
-};
 
 let username;
 let password;
 let codDatabase;
-var teste;
+var result;
 
 app.post('/login', jsonParser, async (req, res) => {
     try {
@@ -35,15 +21,21 @@ app.post('/login', jsonParser, async (req, res) => {
         var db = '';
 
         if (codDatabase == 244) {
-            db = config;
+            db = sqlConnect.dbConfig1;
             sql.connect(db, (err) => {
-
+                console.dir(err);
             })
         }
-        else if (codDatabase == 248) {
-            db = config2;
+        else if (codDatabase == 361) {
+            db = sqlConnect.dbConfig2;
             sql.connect(db, (err) => {
-
+                console.dir(err);
+            })
+        }
+        else if (codDatabase == 448) {
+            db = connection.dbConfig3
+            sql.connect(db, (err) => {
+                console.dir(err);
             })
         }
         else {
@@ -52,21 +44,18 @@ app.post('/login', jsonParser, async (req, res) => {
 
         sql.connect(db, async (err) => {
 
-            new sql.Request().query(`SELECT * FROM USU_USUARIO WHERE USU_LOGIN = '${username}' 
+            await new sql.Request().query(`SELECT * FROM USU_USUARIO WHERE USU_LOGIN = '${username}' 
             AND USU_SENHA = '${password}' AND _DELETE = 0`, (err, result) => {
 
-                teste = result.recordset[0];
-                if (teste.USU_LOGIN == username && teste.USU_SENHA == password) {
+                result = result.recordset[0];
+                if (result.USU_LOGIN == username && result.USU_SENHA == password) {
                     res.redirect('../home')
                 }
                 else {
                     res.json('User os password incorrect!')
                 }
-
             })
-
         })
-
     }
     catch (ex) {
         res.json('message from catch is => ' + ex);
@@ -75,7 +64,7 @@ app.post('/login', jsonParser, async (req, res) => {
 
 app.get('/home', urlencondeParser, function (req, res) {
 
-    res.json(`Bem vindo, ${teste.USU_NOME}`)
+    res.json(`Bem vindo, ${result.USU_NOME}`)
 
 });
 
