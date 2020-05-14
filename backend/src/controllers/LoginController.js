@@ -21,19 +21,19 @@ app.post('/login', jsonParser, async (req, res) => {
         var db = '';
 
         if (codDatabase == 244) {
-            db = sqlConnect.dbConfig1;
+            db = sqlConnect.development.dbConfig1;
             sql.connect(db, (err) => {
                 console.dir(err);
             })
         }
         else if (codDatabase == 361) {
-            db = sqlConnect.dbConfig2;
+            db = sqlConnect.development.dbConfig2;
             sql.connect(db, (err) => {
                 console.dir(err);
             })
         }
         else if (codDatabase == 448) {
-            db = connection.dbConfig3
+            db = sqlConnect.development.dbConfig3
             sql.connect(db, (err) => {
                 console.dir(err);
             })
