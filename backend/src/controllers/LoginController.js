@@ -1,73 +1,67 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const routes = express.Router();
 const sql = require('mssql');
 var sqlConnect = require('../database/connection');
 
 var jsonParser = bodyParser.json();
-var urlencondeParser = bodyParser.urlencoded({ extended: false })
+var urlencondeParser = bodyParser.urlencoded({ extended: true })
 
-let username;
-let password;
-let codDatabase;
-var result;
+app.use(jsonParser);
+app.use(urlencondeParser);
 
-app.post('/login', jsonParser, async (req, res) => {
+app.post('/login', (req, res) => {
     try {
 
-        username = req.body.username;
-        password = req.body.password;
-        codDatabase = req.body.codDb;
-        var db = '';
-
-        if (codDatabase == 244) {
-            db = sqlConnect.development.dbConfig1;
-            sql.connect(db, (err) => {
-                console.dir(err);
-            })
+        let pool1;
+        const dbCod = req.body.dbCod;
+        const username = req.body.username;
+        const password = req.body.password;
+        if (dbCod == 244) {
+            pool1 = new sql.ConnectionPool(sqlConnect.dbConfig1)
         }
-        else if (codDatabase == 361) {
-            db = sqlConnect.development.dbConfig2;
-            sql.connect(db, (err) => {
-                console.dir(err);
-            })
+        else if (dbCod == 360) {
+            pool1 = new sql.ConnectionPool(sqlConnect.dbConfig2)
         }
-        else if (codDatabase == 448) {
-            db = sqlConnect.development.dbConfig3
-            sql.connect(db, (err) => {
-                console.dir(err);
-            })
+        else if (dbCod == 422) {
+            pool1 = new sql.ConnectionPool(sqlConnect.dbConfig3)
         }
-        else {
-            res.json('Cod is not reconized!')
+        const pool1Connect = pool1.connect();
+
+        async function loginFunction() {
+            await pool1Connect;
+
+            const request = pool1.request();
+            const result = await request.query(`select * from usu_usuario where usu_login = '${username}' and usu_senha = '${password}'`)
+            var resultRecords = result.recordset;
+
+            if(resultRecords[0].USU_LOGIN == username && resultRecords[0].USU_SENHA == password){
+                res.json('Welcome, ' + resultRecords[0].USU_NOME)
+            }
+            else{
+                res.json(err)
+            }
+
+            // return resultRecords;
         }
 
-        sql.connect(db, async (err) => {
-
-            await new sql.Request().query(`SELECT * FROM USU_USUARIO WHERE USU_LOGIN = '${username}' 
-            AND USU_SENHA = '${password}' AND _DELETE = 0`, (err, result) => {
-
-                result = result.recordset[0];
-                if (result.USU_LOGIN == username && result.USU_SENHA == password) {
-                    res.redirect('../home')
-                }
-                else {
-                    res.json('User os password incorrect!')
-                }
-            })
-        })
+        loginFunction();
     }
-    catch (ex) {
-        res.json('message from catch is => ' + ex);
+    catch (err) {
+        console.error(err)
     }
-});
+})
 
-app.get('/home', urlencondeParser, function (req, res) {
+app.get('/home', (req, res) => {
+    try {
 
-    res.json(`Bem vindo, ${result.USU_NOME}`)
-
-});
+    }
+    catch (err) {
+        console.error(err)
+    }
+})
 
 var server = app.listen(5000, function () {
-    console.log('Server is running..');
-});
+    console.log('Running...')
+})
