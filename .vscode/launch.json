@@ -16,7 +16,7 @@
                 "${workspaceRoot}/lib/**/*.js",
                 "${workspaceFolder}/lib/**/*.js"
             ],
-            "program": "${workspaceFolder}/backend/src/controllers/LoginController.js"
+            "program": "${workspaceFolder}/backend/src/index.js"
         }
     ]
 }
