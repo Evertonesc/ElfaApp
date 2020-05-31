@@ -4,6 +4,7 @@ const sqlStr = require('../utils/sqlConnect');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const User = require('../Entities/User');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -17,6 +18,8 @@ module.exports = {
             const { username } = req.body;
             const { password } = req.body;
             const dbkey = req.body.dbkey;
+
+            const user = new User(username, password, dbkey);
 
             getSqlConn.getConnectionStr(dbkey);
             connectionString = sqlStr.sqlConn;

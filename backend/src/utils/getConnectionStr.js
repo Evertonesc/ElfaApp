@@ -1,4 +1,4 @@
-const connectionStr = require('../config/dbConfig');
+const connectionStr = require('../database/dbConfig');
 const getStr = require('../utils/sqlConnect');
 let dbConfig = '';
 
@@ -11,9 +11,9 @@ module.exports = {
                 dbConfig = connectionStr.dbConfig2;
             }
             else {
-                console.log('Coddb does not exist!')
-            } 
-            return getStr.sqlConn = dbConfig;                    
+                console.log('Wrong Database Code!');
+            }
+            return getStr.sqlConn = dbConfig;
         }
         catch (err) {
 
